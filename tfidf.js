@@ -94,7 +94,7 @@ readDoc().then((res, rej) => {
   // console.log(rank)
 
   for (const wordKey in rank) {
-    // console.log(wordKey)
+    console.log(wordKey)
     let result = {};
     for (const fileName in rank[wordKey]) {
       // console.log(fileName)
@@ -105,6 +105,11 @@ readDoc().then((res, rej) => {
     result = Object.entries(result)
       .sort(([, a], [, b]) => a - b)
       .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+    result = Object.entries(result).reverse().slice(0, 10).map(entry => {
+      let pair = {};
+      pair[entry[0]] = entry[1];
+      return pair;
+    });
     console.log(result)
   }
   // console.log(similarity([5, 23, 2, 5, 9], [3, 21, 2, 5, 14]));

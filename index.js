@@ -50,5 +50,8 @@ const readDoc = () => {
 }
 
 readDoc().then((res, rej) => {
-  console.log(wordIncludeMap);
+  for (const setKey in wordIncludeMap) {
+    console.log(setKey);
+    console.log(Array.from(wordIncludeMap[setKey]));
+  }
 })
